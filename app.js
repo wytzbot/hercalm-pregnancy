@@ -1,12 +1,12 @@
-      console.log("HerCalm loading...");
+console.log("HerCalm loading...");
 
-let page = 'splash'; 
-let currentSlug = ''; 
-let currentCategory = ''; 
-let country = localStorage.getItem('hercalm_country');
+let page = 'splash';
+let currentSlug = '';
+let currentCategory = '';
+let country = localStorage.getItem('hercalm_country') || 'default'; // ADD DEFAULT HERE
 
 // SAFETY CHECK: If data.js didn't load
-if(typeof GUIDES === 'undefined') {
+if(typeof GUIDES === 'undefined' || typeof COUNTRY_DATA === 'undefined') {
   document.getElementById('app').innerHTML = `<div style="padding:40px;text-align:center"><h1>Error: data.js not found</h1><p>Please check that data.js is in the same folder as index.html</p></div>`;
 }
 
@@ -14,7 +14,7 @@ function render() {
   try {
     const app = document.getElementById('app');
     if(!app) return;
-    
+
     if(page === 'splash') app.innerHTML = Splash();
     if(page === 'country') app.innerHTML = Country();
     if(page === 'home') app.innerHTML = Home();
@@ -26,18 +26,18 @@ function render() {
   }
 }
 
-function t(obj) { 
+function t(obj) {
   if(!obj) return "";
-  return obj[country] || obj['default'] || ""; 
+  return obj[country] || obj['default'] || "";
 }
 
-function randomGreeting() { 
+function randomGreeting() {
   if(typeof GREETINGS === 'undefined') return "Welcome Mama!";
-  return GREETINGS[Math.floor(Math.random() * GREETINGS.length)]; 
+  return GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
 }
 
 function Splash() {
-  setTimeout(() => { page = country? 'home' : 'country'; render(); }, 2500);
+  setTimeout(() => { page = country && country!== 'default'? 'home' : 'country'; render(); }, 2500);
   return `<div class="splash"><div class="bounce">🫄</div><h1 style="font-size:48px;color:#F472B6;margin:20px 0">HerCalm</h1><p style="font-size:18px">Pregnancy guidance that feels like your best friend</p><button class="btn" onclick="page='country';render()">Get Started</button></div>`;
 }
 
@@ -48,11 +48,14 @@ function Country() {
 function Home() {
   const categories = ['Food','Activities','Symptoms','Posture','Mental Health'];
   const icons = {'Food':'🍎','Activities':'🏃','Symptoms':'🤒','Posture':'🧘','Mental Health':'🧠'};
+  const countryName = COUNTRY_DATA[country]?.name || 'You'; // SAFETY?
+  const countryFlag = COUNTRY_DATA[country]?.flag || '🌍';
+
   return `
-    <div class="header"><div class="logo">HerCalm</div><button class="btn" style="padding:8px 16px" onclick="page='country';render()">${COUNTRY_DATA[country]?.flag || '🌍'}</button></div>
+    <div class="header"><div class="logo">HerCalm</div><button class="btn" style="padding:8px 16px" onclick="page='country';render()">${countryFlag}</button></div>
     <div class="container">
       <h1>${randomGreeting()}</h1>
-      <p style="color:#6b7280;margin-bottom:20px">200+ guides adapted for ${COUNTRY_DATA[country]?.name || 'You'}</p>
+      <p style="color:#6b7280;margin-bottom:20px">200+ guides adapted for ${countryName}</p>
       <div class="grid">${categories.map(cat => `
         <div class="category-card card" onclick="page='category';currentCategory='${cat}';render()">
           <div class="category-icon">${icons[cat]}</div>
@@ -81,13 +84,14 @@ function Category(cat) {
 function Guide(slug) {
   const guide = GUIDES.find(g => g.slug === slug);
   if(!guide) return `<div class="container"><p>Guide not found</p></div>`;
-  
-  const speak = () => { 
-    speechSynthesis.cancel(); 
+
+  const speak = () => {
+    speechSynthesis.cancel();
     const text = `${t(guide.title)}. ${t(guide.intro)}. ${t(guide.content)}`;
-    speechSynthesis.speak(new SpeechSynthesisUtterance(text)); 
-}
-const stopSpeak = () => speechSynthesis.cancel();
+    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  }
+  const stopSpeak = () => speechSynthesis.cancel();
+
   return `
     <div class="container">
       <button class="btn" style="background:#6b7280;margin-bottom:20px" onclick="page='category';currentCategory='${guide.category}';render()">← Back</button>
@@ -95,6 +99,7 @@ const stopSpeak = () => speechSynthesis.cancel();
         <span class="badge">${guide.category}</span> <span class="badge">✅ Reviewed</span>
         <h1 style="margin:15px 0">${t(guide.title)}</h1>
         <button class="btn" onclick="speak()">🔊 Listen to Guide</button>
+        <button class="btn" style="background:#f44336;margin-top:10px" onclick="stopSpeak()">⏹️ Stop</button>
         <p style="margin:20px 0"><i>${t(guide.intro)}</i></p>
         <p>${t(guide.content)}</p>
         <div class="dodont" style="margin:20px 0">
