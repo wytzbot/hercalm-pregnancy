@@ -226,7 +226,4 @@ const GUIDES = [
   Choose aisle seat.`,ng:`Yes! Fly before 8 months.
   Carry gala and water. Avoid long haul if possible.`,us:`Yes! TSA is safe. 
   Tell them you're pregnant for extra screening.`},dos:{default:["Walk every hour","Stay hydrated"]},donts:{default:["No flying after 36w","Avoid Zika areas"]},faqs:[{q:"Will pressure hurt baby?",a:"No. Cabin is pressurized."}],source:"ACOG 2024"},
-  
-  // +3 more activities
-    // ========== SYM
 ];
