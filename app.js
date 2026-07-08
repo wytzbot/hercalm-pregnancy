@@ -84,8 +84,10 @@ function Guide(slug) {
   
   const speak = () => { 
     speechSynthesis.cancel(); 
-    speechSynthesis.speak(new SpeechSynthesisUtterance(t(guide.content))); 
-  }
+    const text = `${t(guide.title)}. ${t(guide.intro)}. ${t(guide.content)}`;
+    speechSynthesis.speak(new SpeechSynthesisUtterance(text)); 
+}
+const stopSpeak = () => speechSynthesis.cancel();
   return `
     <div class="container">
       <button class="btn" style="background:#6b7280;margin-bottom:20px" onclick="page='category';currentCategory='${guide.category}';render()">← Back</button>
