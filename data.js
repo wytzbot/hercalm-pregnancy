@@ -4,7 +4,6 @@ const COUNTRY_DATA = {
   uk: { name: "United Kingdom", flag: "🇬🇧" },
   default: { name: "Other", flag: "🌍" }
 }
-
 const GREETINGS = [
   "Good morning Mama! ☀️ Your baby loves you today",
   "Hey Queen! 👑 How's the bump doing?",
@@ -17,7 +16,7 @@ const GREETINGS = [
 ]
 
 const GUIDES = [
-  // ========== 40 FOOD GUIDES ==========
+
   {slug:"food-pepper-soup",category:"Food",title:{default:"Can I eat Pepper Soup while pregnant?",ng:"Can I eat Pepper Soup while pregnant?",us:"Can I eat Spicy Chicken Soup while pregnant?",uk:"Can I eat Hot & Sour Soup while pregnant?"},intro:{default:"2am cravings are real. If your mouth isn't burning, is it even pepper soup?",ng:"Omo, pepper soup at 2am is a pregnancy right 😂 Especially with cold malt."},content:{default:`Yes! Pepper soup is safe and can actually help with nausea. The high heat used to cook it kills bacteria, and ginger + garlic are great for digestion. 
   
   The main thing is food safety. Use fresh meat from a trusted source and cook until there is no pink. Avoid versions with raw egg. 
@@ -84,9 +83,6 @@ const GUIDES = [
   
   Heat until steaming. Or choose canned tuna, cooked chicken instead.`},dos:{default:["Heat until steaming","Buy from clean source"]},donts:{default:["No cold deli meat","No undercooked suya"]},faqs:[{q:"What about hot dogs?",a:"Heat until steaming too."}],source:"CDC 2024 Listeria Guidelines"},
   
-  // +35 more food guides: Beans, Garri, Eba, Okra, Egusi, Fufu, Pounded Yam, Plantain, Rice, Spaghetti, Bread, Eggs, Milk, Cheese, Fish, Chicken, Beef, Fruits, Vegetables, Caffeine, Chocolate, Ice Cream, etc.
-  
-  // ========== 40 ACTIVITIES GUIDES ==========
   {slug:"activity-sex",category:"Activities",title:{default:"Is sex safe during pregnancy?"},intro:{default:"The question everyone Googles at 3am 😳"},content:{default:`Yes for most pregnancies. Baby is protected by amniotic fluid, uterus, and mucus plug.
   
   Benefits: Stress relief, sleep, connection, and pelvic blood flow. Orgasm is safe.
@@ -109,9 +105,7 @@ const GUIDES = [
   
   Road trips: stop every 2 hours to walk.`},dos:{default:["Stay hydrated","Walk every hour"]},donts:{default:["No travel after 36 weeks","Avoid Zika areas"]},faqs:[{q:"Can I drive?",a:"Yes. Seatbelt below bump."}],source:"ACOG Travel Guidelines 2024"},
   
-  // +38 more activities: Gym, Yoga, Swimming, Running, Dancing, Sauna, Driving, Flying, etc.
   
-  // ========== 40 SYMPTOMS GUIDES ==========
   {slug:"symptom-morning-sickness",category:"Symptoms",title:{default:"Why do I have morning sickness?"},intro:{default:"Welcome to the nausea club 🤢"},content:{default:`Caused by HCG and Estrogen hormones. Peaks week 9, ends week 14 for most.
   
   It's a good sign - means placenta is developing. 80% of women get it.
@@ -124,9 +118,7 @@ const GUIDES = [
   
   Sea-Bands and popsicles help too.`},dos:{default:["Small frequent meals","Sip water"]},donts:{default:["Don't take meds without doctor","Don't go long without food"]},faqs:[{q:"When will it stop?",a:"Week 14-16 for most."}],source:"Mayo Clinic 2024"},
   
-  // +39 more symptoms: Heartburn, Back Pain, Swelling, Headache, Cramps, Insomnia, Fatigue, Constipation, etc.
-  
-  // ========== 40 POSTURE GUIDES ==========
+
   {slug:"posture-sleep",category:"Posture",title:{default:"How should I sleep while pregnant?"},intro:{default:"Sleeping becomes a sport 🛌"},content:{default:`Best: Side sleeping, especially left side. Improves blood flow to baby and kidneys.
   
   After 20 weeks avoid flat on back. Uterus can press vena cava and cause dizziness.
@@ -137,9 +129,7 @@ const GUIDES = [
   
   Left side best but right side fine too.`},dos:{default:["Sleep on side","Use pillows"]},donts:{default:["Avoid flat on back after 20w","Don't sleep on stomach"]},faqs:[{q:"What if I wake on back?",a:"Just roll over. Body will wake you."}],source:"ACOG Sleep 2024"},
   
-  // +39 more posture: Sitting, Standing, Lifting, Bending, Working, etc.
   
-  // ========== 40 MENTAL HEALTH GUIDES ==========
   {slug:"mental-anxiety",category:"Mental Health",title:{default:"Is it normal to feel anxious while pregnant?"},intro:{default:"Your brain is running 100 tabs 🧠"},content:{default:`100% normal. Hormones + big life change. Anxiety is your brain trying to protect you.
   
   Common triggers: miscarriage fear, money, labor, being good mom, body changes. Peaks 1st and 3rd trimester.
@@ -152,8 +142,7 @@ const GUIDES = [
   
   Join mom groups. You need people who get it.`},dos:{default:["Talk to someone","Practice breathing"]},donts:{default:["Don't isolate","Don't Google worst case"]},faqs:[{q:"Will anxiety hurt baby?",a:"Short term fine. Chronic: talk to doctor."}],source:"WHO Mental Health 2024"}
   
-  // +39 more mental: Depression, Mood Swings, Baby Blues, Fear of Labor, Body Image, etc.
-  // ========== FOOD 6-20 ==========
+
   {slug:"food-eggs",category:"Food",title:{default:"Can I eat Eggs while pregnant?"},intro:{default:"Breakfast staple 🍳"},content:{default:`Yes! Eggs are amazing in pregnancy. Full of protein, choline, and vitamin D. 
   Key: Cook them until both yolk and white are firm. No runny eggs. 
   Why? Raw/undercooked eggs can have salmonella. 
@@ -189,9 +178,7 @@ const GUIDES = [
   Don't replace meals with chocolate.`,us:`Yes! Great for cravings. 
   Choose 70% dark for less sugar.`},dos:{default:["Small portions","Choose dark chocolate"]},donts:{default:["Don't overeat","Don't use as meal"]},faqs:[{q:"Will sugar hurt baby?",a:"No, but too much causes weight gain."}],source:"Mayo Clinic 2024"},
 
-  // +10 more food: Beans, Garri, Eba, Okra, Egusi, Fufu, Pounded Yam, Plantain, Spaghetti, Bread
   
-  // ========== ACTIVITIES 3-10 ==========
   {slug:"activity-gym",category:"Activities",title:{default:"Can I go to the Gym while pregnant?"},intro:{default:"Staying fit 💪"},content:{default:`Yes! Exercise is great. 150 minutes per week recommended.
   Safe: Walking, swimming, prenatal yoga, light weights.
   Avoid: Contact sports, lying flat on back after 20w, overheating.
