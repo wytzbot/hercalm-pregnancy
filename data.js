@@ -3,7 +3,7 @@ const COUNTRY_DATA = {
   us: { name: "United States", flag: "🇺🇸" },
   uk: { name: "United Kingdom", flag: "🇬🇧" },
   default: { name: "Other", flag: "🌍" }
-};
+}
 
 const GREETINGS = [
   "Good morning Mama! ☀️ Your baby loves you today",
@@ -14,7 +14,7 @@ const GREETINGS = [
   "New day, new kicks! 💖 Drink water first",
   "You got this Mama! 🫶 One day at a time",
   "Glow up loading... ✨ Stay hydrated"
-];
+]
 
 const GUIDES = [
   // ========== 40 FOOD GUIDES ==========
@@ -84,6 +84,76 @@ const GUIDES = [
   
   Heat until steaming. Or choose canned tuna, cooked chicken instead.`},dos:{default:["Heat until steaming","Buy from clean source"]},donts:{default:["No cold deli meat","No undercooked suya"]},faqs:[{q:"What about hot dogs?",a:"Heat until steaming too."}],source:"CDC 2024 Listeria Guidelines"},
   
+  // +35 more food guides: Beans, Garri, Eba, Okra, Egusi, Fufu, Pounded Yam, Plantain, Rice, Spaghetti, Bread, Eggs, Milk, Cheese, Fish, Chicken, Beef, Fruits, Vegetables, Caffeine, Chocolate, Ice Cream, etc.
+  
+  // ========== 40 ACTIVITIES GUIDES ==========
+  {slug:"activity-sex",category:"Activities",title:{default:"Is sex safe during pregnancy?"},intro:{default:"The question everyone Googles at 3am 😳"},content:{default:`Yes for most pregnancies. Baby is protected by amniotic fluid, uterus, and mucus plug.
+  
+  Benefits: Stress relief, sleep, connection, and pelvic blood flow. Orgasm is safe.
+  
+  Skip if: placenta previa, bleeding, leaking fluid, cervix issues, or doctor said pelvic rest. Also no sex if water broke.
+  
+  Trimester tips: 1st=nausea, 2nd=best time, 3rd=try side-lying or spooning.`,ng:`Yes! Communicate with partner.
+  
+  If tired, rest. If position hurts, switch. This is time to get closer.`,us:`Great exercise. Use pillows for support.
+  
+  Braxton Hicks after orgasm is normal. If >30min, call doctor.`},dos:{default:["Communicate","Stop if pain"]},donts:{default:["No sex if pelvic rest","Avoid deep penetration late term"]},faqs:[{q:"Will it hurt baby?",a:"No."},{q:"Can it cause miscarriage?",a:"No."}],source:"WHO Sexual Health 2024"},
+  
+  {slug:"activity-travel",category:"Activities",title:{default:"Is it safe to travel while pregnant?"},intro:{default:"Wanderlust + Baby bump = stress ✈️"},content:{default:`Yes in 2nd trimester. Safest time is week 14-28.
+  
+  After 36 weeks most airlines won't fly you. Walk every hour on flights. Wear compression socks. Stay hydrated.
+  
+  Avoid Zika areas. Bring snacks and medical records. Know where hospital is at destination.`,ng:`Avoid potholes in okada and long buses.
+  
+  Fly before 8 months. Carry gala and water.`,us:`Flying safe till 36 weeks. Get aisle seat.
+  
+  Road trips: stop every 2 hours to walk.`},dos:{default:["Stay hydrated","Walk every hour"]},donts:{default:["No travel after 36 weeks","Avoid Zika areas"]},faqs:[{q:"Can I drive?",a:"Yes. Seatbelt below bump."}],source:"ACOG Travel Guidelines 2024"},
+  
+  // +38 more activities: Gym, Yoga, Swimming, Running, Dancing, Sauna, Driving, Flying, etc.
+  
+  // ========== 40 SYMPTOMS GUIDES ==========
+  {slug:"symptom-morning-sickness",category:"Symptoms",title:{default:"Why do I have morning sickness?"},intro:{default:"Welcome to the nausea club 🤢"},content:{default:`Caused by HCG and Estrogen hormones. Peaks week 9, ends week 14 for most.
+  
+  It's a good sign - means placenta is developing. 80% of women get it.
+  
+  Help: Small meals every 2-3hrs. Crackers before getting up. Ginger. Vitamin B6. Cold foods.
+  
+  Call doctor if: can't keep water down 24hrs, peeing less, dizzy, losing weight.`,ng:`Eat gala and biscuit before standing.
+  
+  Ginger, lemon, sour things help. Avoid frying oil smell.`,us:`B6 + Unisom at night is #1 combo.
+  
+  Sea-Bands and popsicles help too.`},dos:{default:["Small frequent meals","Sip water"]},donts:{default:["Don't take meds without doctor","Don't go long without food"]},faqs:[{q:"When will it stop?",a:"Week 14-16 for most."}],source:"Mayo Clinic 2024"},
+  
+  // +39 more symptoms: Heartburn, Back Pain, Swelling, Headache, Cramps, Insomnia, Fatigue, Constipation, etc.
+  
+  // ========== 40 POSTURE GUIDES ==========
+  {slug:"posture-sleep",category:"Posture",title:{default:"How should I sleep while pregnant?"},intro:{default:"Sleeping becomes a sport 🛌"},content:{default:`Best: Side sleeping, especially left side. Improves blood flow to baby and kidneys.
+  
+  After 20 weeks avoid flat on back. Uterus can press vena cava and cause dizziness.
+  
+  Tools: Pregnancy pillow or 2 regular pillows. One between knees, one for bump.`,ng:`'W' position: Pillow between legs, behind back, wrapper around waist.
+  
+  If you wake on back, just roll over.`,us:`Pregnancy pillow is worth it.
+  
+  Left side best but right side fine too.`},dos:{default:["Sleep on side","Use pillows"]},donts:{default:["Avoid flat on back after 20w","Don't sleep on stomach"]},faqs:[{q:"What if I wake on back?",a:"Just roll over. Body will wake you."}],source:"ACOG Sleep 2024"},
+  
+  // +39 more posture: Sitting, Standing, Lifting, Bending, Working, etc.
+  
+  // ========== 40 MENTAL HEALTH GUIDES ==========
+  {slug:"mental-anxiety",category:"Mental Health",title:{default:"Is it normal to feel anxious while pregnant?"},intro:{default:"Your brain is running 100 tabs 🧠"},content:{default:`100% normal. Hormones + big life change. Anxiety is your brain trying to protect you.
+  
+  Common triggers: miscarriage fear, money, labor, being good mom, body changes. Peaks 1st and 3rd trimester.
+  
+  Help: Talk to someone. 4-4-4 breathing. Prenatal yoga. Limit Google.
+  
+  Get help if: stops you from eating/sleeping 2+ weeks.`,ng:`Talk to mama, sister, pastor.
+  
+  Prayer and rest help. Don't carry alone.`,us:`Therapy helps. Many insurance cover it.
+  
+  Join mom groups. You need people who get it.`},dos:{default:["Talk to someone","Practice breathing"]},donts:{default:["Don't isolate","Don't Google worst case"]},faqs:[{q:"Will anxiety hurt baby?",a:"Short term fine. Chronic: talk to doctor."}],source:"WHO Mental Health 2024"}
+  
+  // +39 more mental: Depression, Mood Swings, Baby Blues, Fear of Labor, Body Image, etc.
+  // ========== FOOD 6-20 ==========
   {slug:"food-eggs",category:"Food",title:{default:"Can I eat Eggs while pregnant?"},intro:{default:"Breakfast staple 🍳"},content:{default:`Yes! Eggs are amazing in pregnancy. Full of protein, choline, and vitamin D. 
   Key: Cook them until both yolk and white are firm. No runny eggs. 
   Why? Raw/undercooked eggs can have salmonella. 
@@ -119,29 +189,9 @@ const GUIDES = [
   Don't replace meals with chocolate.`,us:`Yes! Great for cravings. 
   Choose 70% dark for less sugar.`},dos:{default:["Small portions","Choose dark chocolate"]},donts:{default:["Don't overeat","Don't use as meal"]},faqs:[{q:"Will sugar hurt baby?",a:"No, but too much causes weight gain."}],source:"Mayo Clinic 2024"},
 
-  // ========== 40 ACTIVITIES GUIDES ==========
-  {slug:"activity-sex",category:"Activities",title:{default:"Is sex safe during pregnancy?"},intro:{default:"The question everyone Googles at 3am 😳"},content:{default:`Yes for most pregnancies. Baby is protected by amniotic fluid, uterus, and mucus plug.
+  // +10 more food: Beans, Garri, Eba, Okra, Egusi, Fufu, Pounded Yam, Plantain, Spaghetti, Bread
   
-  Benefits: Stress relief, sleep, connection, and pelvic blood flow. Orgasm is safe.
-  
-  Skip if: placenta previa, bleeding, leaking fluid, cervix issues, or doctor said pelvic rest. Also no sex if water broke.
-  
-  Trimester tips: 1st=nausea, 2nd=best time, 3rd=try side-lying or spooning.`,ng:`Yes! Communicate with partner.
-  
-  If tired, rest. If position hurts, switch. This is time to get closer.`,us:`Great exercise. Use pillows for support.
-  
-  Braxton Hicks after orgasm is normal. If >30min, call doctor.`},dos:{default:["Communicate","Stop if pain"]},donts:{default:["No sex if pelvic rest","Avoid deep penetration late term"]},faqs:[{q:"Will it hurt baby?",a:"No."},{q:"Can it cause miscarriage?",a:"No."}],source:"WHO Sexual Health 2024"},
-  
-  {slug:"activity-travel",category:"Activities",title:{default:"Is it safe to travel while pregnant?"},intro:{default:"Wanderlust + Baby bump = stress ✈️"},content:{default:`Yes in 2nd trimester. Safest time is week 14-28.
-  
-  After 36 weeks most airlines won't fly you. Walk every hour on flights. Wear compression socks. Stay hydrated.
-  
-  Avoid Zika areas. Bring snacks and medical records. Know where hospital is at destination.`,ng:`Avoid potholes in okada and long buses.
-  
-  Fly before 8 months. Carry gala and water.`,us:`Flying safe till 36 weeks. Get aisle seat.
-  
-  Road trips: stop every 2 hours to walk.`},dos:{default:["Stay hydrated","Walk every hour"]},donts:{default:["No travel after 36 weeks","Avoid Zika areas"]},faqs:[{q:"Can I drive?",a:"Yes. Seatbelt below bump."}],source:"ACOG Travel Guidelines 2024"},
-  
+  // ========== ACTIVITIES 3-10 ==========
   {slug:"activity-gym",category:"Activities",title:{default:"Can I go to the Gym while pregnant?"},intro:{default:"Staying fit 💪"},content:{default:`Yes! Exercise is great. 150 minutes per week recommended.
   Safe: Walking, swimming, prenatal yoga, light weights.
   Avoid: Contact sports, lying flat on back after 20w, overheating.
@@ -162,41 +212,21 @@ const GUIDES = [
   Benefits: Better sleep, less back pain, breathing for labor.`,ng:`Yes! Gentle stretching and breathing help.
   Avoid very difficult poses.`,us:`Yes! Many studios have prenatal yoga.
   Great for pelvic floor too.`},dos:{default:["Join prenatal class","Focus on breathing"]},donts:{default:["No hot yoga","No lying on back late"]},faqs:[{q:"Can beginners start?",a:"Yes! Tell instructor you're pregnant."}],source:"ACOG 2024"},
-
-  // ========== 40 SYMPTOMS GUIDES ==========
-  {slug:"symptom-morning-sickness",category:"Symptoms",title:{default:"Why do I have morning sickness?"},intro:{default:"Welcome to the nausea club 🤢"},content:{default:`Caused by HCG and Estrogen hormones. Peaks week 9, ends week 14 for most.
   
-  It's a good sign - means placenta is developing. 80% of women get it.
+  {slug:"activity-driving",category:"Activities",title:{default:"Is it safe to Drive while pregnant?"},intro:{default:"On the road 🚗"},content:{default:`Yes! Driving is safe throughout pregnancy.
+  Key: Wear seatbelt correctly. Lap belt under bump, shoulder belt between breasts.
+  Take breaks every 2 hours on long trips. Stay hydrated.
+  After 36 weeks, maybe have someone else drive to hospital.`,ng:`Yes! Avoid potholes and okada traffic stress.
+  Carry water and snacks.`,us:`Yes! Adjust seat so you're 10 inches from airbag.
+  Don't drive if feeling dizzy.`},dos:{default:["Wear seatbelt properly","Take breaks"]},donts:{default:["Don't drive if dizzy","Don't skip seatbelt"]},faqs:[{q:"When should I stop?",a:"When you feel uncomfortable or doctor advises."}],source:"NHTSA 2024"},
   
-  Help: Small meals every 2-3hrs. Crackers before getting up. Ginger. Vitamin B6. Cold foods.
+  {slug:"activity-flying",category:"Activities",title:{default:"Is Flying safe while pregnant?"},intro:{default:"Vacation time? ✈️"},content:{default:`Yes until 36 weeks for most airlines. Safest is 2nd trimester.
+  Risks: Blood clots. Solution: Walk every hour, compression socks, water.
+  Bring medical records and doctor's note after 28 weeks.
+  Choose aisle seat.`,ng:`Yes! Fly before 8 months.
+  Carry gala and water. Avoid long haul if possible.`,us:`Yes! TSA is safe. 
+  Tell them you're pregnant for extra screening.`},dos:{default:["Walk every hour","Stay hydrated"]},donts:{default:["No flying after 36w","Avoid Zika areas"]},faqs:[{q:"Will pressure hurt baby?",a:"No. Cabin is pressurized."}],source:"ACOG 2024"},
   
-  Call doctor if: can't keep water down 24hrs, peeing less, dizzy, losing weight.`,ng:`Eat gala and biscuit before standing.
-  
-  Ginger, lemon, sour things help. Avoid frying oil smell.`,us:`B6 + Unisom at night is #1 combo.
-  
-  Sea-Bands and popsicles help too.`},dos:{default:["Small frequent meals","Sip water"]},donts:{default:["Don't take meds without doctor","Don't go long without food"]},faqs:[{q:"When will it stop?",a:"Week 14-16 for most."}],source:"Mayo Clinic 2024"},
-
-  // ========== 40 POSTURE GUIDES ==========
-  {slug:"posture-sleep",category:"Posture",title:{default:"How should I sleep while pregnant?"},intro:{default:"Sleeping becomes a sport 🛌"},content:{default:`Best: Side sleeping, especially left side. Improves blood flow to baby and kidneys.
-  
-  After 20 weeks avoid flat on back. Uterus can press vena cava and cause dizziness.
-  
-  Tools: Pregnancy pillow or 2 regular pillows. One between knees, one for bump.`,ng:`'W' position: Pillow between legs, behind back, wrapper around waist.
-  
-  If you wake on back, just roll over.`,us:`Pregnancy pillow is worth it.
-  
-  Left side best but right side fine too.`},dos:{default:["Sleep on side","Use pillows"]},donts:{default:["Avoid flat on back after 20w","Don't sleep on stomach"]},faqs:[{q:"What if I wake on back?",a:"Just roll over. Body will wake you."}],source:"ACOG Sleep 2024"},
-
-  // ========== 40 MENTAL HEALTH GUIDES ==========
-  {slug:"mental-anxiety",category:"Mental Health",title:{default:"Is it normal to feel anxious while pregnant?"},intro:{default:"Your brain is running 100 tabs 🧠"},content:{default:`100% normal. Hormones + big life change. Anxiety is your brain trying to protect you.
-  
-  Common triggers: miscarriage fear, money, labor, being good mom, body changes. Peaks 1st and 3rd trimester.
-  
-  Help: Talk to someone. 4-4-4 breathing. Prenatal yoga. Limit Google.
-  
-  Get help if: stops you from eating/sleeping 2+ weeks.`,ng:`Talk to mama, sister, pastor.
-  
-  Prayer and rest help. Don't carry alone.`,us:`Therapy helps. Many insurance cover it.
-  
-  Join mom groups. You need people who get it.`},dos:{default:["Talk to someone","Practice breathing"]},donts:{default:["Don't isolate","Don't Google worst case"]},faqs:[{q:"Will anxiety hurt baby?",a:"Short term fine. Chronic: talk to doctor."}],source:"WHO Mental Health 2024"}
-]; // <-- THIS WAS MISSING
+  // +3 more activities
+    // ========== SYM
+];
