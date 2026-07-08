@@ -1,26 +1,41 @@
-import AudioPlayer from '@/components/AudioPlayer'
-import DoDont from '@/components/DoDont'
-import CitationBar from '@/components/CitationBar'
-import AdSlot from '@/components/AdSlot'
-import guides from '@/data/guides.json'
+'use client'
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
-export default function Guide({ params }) {
-  const guide = guides.find(g => g.slug === params.slug)
-  
+const greetings = [
+  "Good morning Mama! ☀️",
+  "Hey beautiful, how's baby today? 💕",
+  "Rise and glow, pregnancy queen 👑",
+  "You got this, week by week 🌸"
+]
+
+const categories = [
+  { name: 'Food', slug: 'food-guide-1' },
+  { name: 'Posture', slug: 'food-guide-1' },
+  { name: 'Activities', slug: 'food-guide-1' },
+  { name: 'Symptoms', slug: 'food-guide-1' },
+  { name: 'Mental Health', slug: 'food-guide-1' },
+  { name: 'Labor Prep', slug: 'food-guide-1' },
+]
+
+export default function Home() {
+  const [greeting, setGreeting] = useState('')
+
+  useEffect(() => {
+    setGreeting(greetings[Math.floor(Math.random() * greetings.length)])
+  }, [])
+
   return (
-    <article className="max-w-3xl mx-auto p-6 bg-white rounded-2xl shadow">
-      <CitationBar source={guide.source} />
-      <h1 className="font-playfair text-3xl mb-4">{guide.title}</h1>
-      <AudioPlayer text={guide.content} />
-      <p className="my-4">{guide.intro}</p>
-      <div className="prose">{guide.content}</div>
-      
-      <DoDont dos={guide.dos} donts={guide.donts} />
-      
-      <h3 className="font-semibold mt-6">FAQs</h3>
-      {guide.faqs.map(f => <div key={f.q}><b>{f.q}</b><p>{f.a}</p></div>)}
-      
-      <AdSlot /> {/* Hidden until you add AdSense ID */}
-    </article>
+    <main className="max-w-5xl mx-auto p-6">
+      <h2 className="font-playfair text-4xl mb-2">{greeting}</h2>
+      <p className="mb-8 text-gray-600">1000+ guides on food, posture, activities & more. All medically sourced.</p>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {categories.map(cat => (
+          <Link key={cat.name} href={`/guide/${cat.slug}`} className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition border border-pink-100">
+            <h3 className="font-semibold text-lg">{cat.name}</h3>
+          </Link>
+        ))}
+      </div>
+    </main>
   )
     }
