@@ -1,1 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+.font-playfair { font-family: var(--font-playfair); }
+.font-poppins { font-family: var(--font-poppins); }
