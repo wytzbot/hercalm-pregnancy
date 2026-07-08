@@ -1,1 +1,80 @@
+let page = 'splash'; let currentSlug = ''; let currentCategory = ''; let country = localStorage.getItem('hercalm_country');
 
+function render() {
+  const app = document.getElementById('app');
+  if(page === 'splash') app.innerHTML = Splash();
+  if(page === 'country') app.innerHTML = Country();
+  if(page === 'home') app.innerHTML = Home();
+  if(page === 'category') app.innerHTML = Category(currentCategory);
+  if(page === 'guide') app.innerHTML = Guide(currentSlug);
+}
+
+function t(obj) { return obj[country] || obj['default']; }
+function randomGreeting() { return GREETINGS[Math.floor(Math.random() * GREETINGS.length)]; }
+
+function Splash() {
+  setTimeout(() => { page = country? 'home' : 'country'; render(); }, 2500);
+  return `<div class="splash"><div class="bounce">🫄</div><h1 style="font-size:48px;color:var(--pink);margin:20px 0">HerCalm</h1><p style="font-size:18px">Pregnancy guidance that feels like your best friend</p><button class="btn" onclick="page='country';render()">Get Started</button></div>`;
+}
+
+function Country() {
+  return `<div class="modal"><div class="card" style="max-width:500px"><h2>Where are you? 🤰</h2><p>We'll show you food and advice available in your country.</p>${Object.keys(COUNTRY_DATA).map(c => `<button class="card" style="width:100%;margin:10px 0;text-align:left" onclick="localStorage.setItem('hercalm_country','${c}'); country='${c}'; page='home'; render()">${COUNTRY_DATA[c].flag} ${COUNTRY_DATA[c].name}</button>`).join('')}</div></div>`;
+}
+
+function Home() {
+  const categories = ['Food','Activities','Symptoms','Posture','Mental Health'];
+  const icons = {'Food':'🍎','Activities':'🏃','Symptoms':'🤒','Posture':'🧘','Mental Health':'🧠'};
+  return `
+    <div class="header"><div class="logo">HerCalm</div><button class="btn" style="padding:8px 16px" onclick="page='country';render()">${COUNTRY_DATA[country].flag}</button></div>
+    <div class="container">
+      <h1>${randomGreeting()}</h1>
+      <p style="color:#6b7280;margin-bottom:20px">200+ guides adapted for ${COUNTRY_DATA[country].name}</p>
+      <div class="grid">${categories.map(cat => `
+        <div class="category-card card" onclick="page='category';currentCategory='${cat}';render()">
+          <div class="category-icon">${icons[cat]}</div>
+          <h3>${cat}</h3><p>40+ Guides</p>
+        </div>`).join('')}
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="123" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <div class="footer"><a href="privacy.html">Privacy Policy</a> • <span>Medically Reviewed</span></div>
+    </div>`;
+}
+
+function Category(cat) {
+  const filtered = GUIDES.filter(g => g.category === cat);
+  return `
+    <div class="container">
+      <button class="btn" style="background:#6b7280;margin-bottom:20px" onclick="page='home';render()">← Back</button>
+      <h1>${cat}</h1>
+      <div class="grid">${filtered.map(g => `
+        <div class="card" style="cursor:pointer" onclick="page='guide';currentSlug='${g.slug}';render()">
+          <h3>${t(g.title)}</h3>
+          <span class="badge">Medically Reviewed</span>
+        </div>`).join('')}</div>
+    </div>`;
+}
+
+function Guide(slug) {
+  const guide = GUIDES.find(g => g.slug === slug);
+  const speak = () => { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(t(guide.content))); }
+  return `
+    <div class="container">
+      <button class="btn" style="background:#6b7280;margin-bottom:20px" onclick="page='category';currentCategory='${guide.category}';render()">← Back</button>
+      <div class="card">
+        <span class="badge">${guide.category}</span> <span class="badge">✅ Reviewed</span>
+        <h1 style="margin:15px 0">${t(guide.title)}</h1>
+        <button class="btn" onclick="speak()">🔊 Listen to Guide</button>
+        <p style="margin:20px 0"><i>${t(guide.intro)}</i></p>
+        <p>${t(guide.content)}</p>
+        <div class="dodont" style="margin:20px 0">
+          <div class="do"><h3>✅ Do's</h3><ul>${t(guide.dos).map(d=>`<li>${d}</li>`).join('')}</ul></div>
+          <div class="dont"><h3>❌ Don'ts</h3><ul>${t(guide.donts).map(d=>`<li>${d}</li>`).join('')}</ul></div>
+        </div>
+        <h3>FAQs</h3>${guide.faqs.map(f=>`<p><b>Q: ${f.q}</b><br>A: ${f.a}</p>`).join('')}
+        <div class="disclaimer">⚠️ Source: ${guide.source}. This is educational only. Talk to your doctor.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="456" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    </div>`;
+}
+
+render();
